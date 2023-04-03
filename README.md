@@ -1,4 +1,9 @@
 # E-Monitoring Web Application
+Teknologi untuk membuat aplikasi ini adalah:
+* Laravel 10
+* VueJS 3
+* Tailwind CSS
+* MySQL
 ## Pages & Fiturs
 * Login
 * Dashboard
