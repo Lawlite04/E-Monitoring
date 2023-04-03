@@ -17,13 +17,15 @@ import { Head } from '@inertiajs/vue3';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="">
-                        <v-data-table :headers="headers" :items="desserts" :sort-by="[{ key: 'leader_name', order: 'asc' }]"
+                        <v-data-table :headers="headers" :items="desserts" :search="search" :sort-by="[{ key: 'leader_name', order: 'asc' }]"
                             class="elevation-1">
                             <template v-slot:top>
                                 <v-toolbar flat>
                                     <v-toolbar-title>Leader Datas</v-toolbar-title>
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
+                                    <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line
+                                        hide-details></v-text-field>
                                     <v-dialog v-model="dialog" max-width="500px">
                                         <template v-slot:activator="{ props }">
                                             <v-btn color="primary" dark class="mb-2" v-bind="props">
@@ -138,6 +140,7 @@ export default {
     data: () => ({
         dialog: false,
         dialogDelete: false,
+        search: '',
         headers: [
             {
                 title: 'Avatar',

@@ -18,12 +18,14 @@ import { Head } from '@inertiajs/vue3';
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="">
                         <v-data-table :headers="headers" :items="desserts"
-                            :sort-by="[{ key: 'project_name', order: 'asc' }]" class="elevation-1">
+                            :search="search" :sort-by="[{ key: 'project_name', order: 'asc' }]" class="elevation-1">
                             <template v-slot:top>
                                 <v-toolbar flat>
                                     <v-toolbar-title>Project Monitoring Datas</v-toolbar-title>
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
+                                    <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line
+                                        hide-details></v-text-field>
                                     <v-dialog v-model="dialog" max-width="800px">
                                         <template v-slot:activator="{ props }">
                                             <v-btn color="primary" dark class="mb-2" v-bind="props">
@@ -211,6 +213,7 @@ export default {
     data: () => ({
         dialog: false,
         dialogDelete: false,
+        search: '',
         skill: 50,
         rules: {
             required: value => !!value || 'Field is required',
